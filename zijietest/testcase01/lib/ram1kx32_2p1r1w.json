@@ -1,0 +1,1604 @@
+{
+    "library": {
+        "ram1kx32_2p1r1w_lib": {
+            "date": "Nov 16, 2021",
+            "revision": 1.0,
+            "delay_model": "table_lookup",
+            "simulation": false,
+            "time_unit": "1ns",
+            "voltage_unit": "1V",
+            "current_unit": "1mA",
+            "pulling_resistance_unit": "1kohm",
+            "leakage_power_unit": "1nW",
+            "capacitive_load_unit": {
+                "1": "pf"
+            },
+            "library_features": "report_delay_calculation",
+            "in_place_swap_mode": "match_footprint",
+            "default_input_pin_cap": 1.0,
+            "default_inout_pin_cap": 1.0,
+            "default_max_transition": 0.5,
+            "default_cell_leakage_power": 0.0,
+            "default_leakage_power_density": 0.0,
+            "default_connection_class": "universal",
+            "default_fanout_load": 1.0,
+            "default_output_pin_cap": 0.0,
+            "bus_naming_style": "%s[%d]",
+            "nom_process": 1.0,
+            "nom_voltage": 1.2,
+            "nom_temperature": 25.0,
+            "operating_conditions": {
+                "tt1p2v25c": {
+                    "process": 1.0,
+                    "voltage": 1.2,
+                    "temperature": 25,
+                    "tree_type": "balanced_tree"
+                },
+                "ff1p32vn40c": {
+                    "process": 1.0,
+                    "voltage": 1.32,
+                    "temperature": -40,
+                    "tree_type": "best_case_tree"
+                },
+                "ss1p08v125c": {
+                    "process": 1.0,
+                    "voltage": 1.08,
+                    "temperature": 125,
+                    "tree_type": "worst_case_tree"
+                },
+                "ss1p08vn40c": {
+                    "process": 1.0,
+                    "voltage": 1.08,
+                    "temperature": -40,
+                    "tree_type": "worst_case_tree"
+                },
+                "ff1p32v125c": {
+                    "process": 1.0,
+                    "voltage": 1.32,
+                    "temperature": 125,
+                    "tree_type": "best_case_tree"
+                }
+            },
+            "default_operating_conditions": "tt1p2v25c",
+            "k_process_cell_rise": 1.0,
+            "k_temp_cell_rise": 0.000177,
+            "k_volt_cell_rise": -1.8732,
+            "k_process_cell_fall": 1.0,
+            "k_temp_cell_fall": 0.000177,
+            "k_volt_cell_fall": -1.8732,
+            "k_process_rise_transition": 1.0,
+            "k_temp_rise_transition": 0.00146,
+            "k_volt_rise_transition": -0.8876,
+            "k_process_fall_transition": 1.0,
+            "k_temp_fall_transition": 0.00168,
+            "k_volt_fall_transition": -1.044869,
+            "k_process_hold_rise": 1.0,
+            "k_temp_hold_rise": 0.0014,
+            "k_volt_hold_rise": -1.0,
+            "k_process_hold_fall": 1.0,
+            "k_temp_hold_fall": 0.0014,
+            "k_volt_hold_fall": -1.0,
+            "k_process_setup_rise": 1.0,
+            "k_temp_setup_rise": 0.00117,
+            "k_volt_setup_rise": -1.41304,
+            "k_process_setup_fall": 1.0,
+            "k_temp_setup_fall": 0.00117,
+            "k_volt_setup_fall": -1.41304,
+            "k_process_min_pulse_width_high": 1.0,
+            "k_temp_min_pulse_width_high": 0.000177,
+            "k_volt_min_pulse_width_high": -1.8732,
+            "k_process_min_pulse_width_low": 1.0,
+            "k_temp_min_pulse_width_low": 0.000177,
+            "k_volt_min_pulse_width_low": -1.8732,
+            "define": [
+                "PWL",
+                "cell",
+                "string",
+                [
+                    "total_intrinsic_cap",
+                    "cell",
+                    "float"
+                ]
+            ],
+            "slew_lower_threshold_pct_rise": 30,
+            "slew_upper_threshold_pct_rise": 70,
+            "input_threshold_pct_fall": 50,
+            "output_threshold_pct_fall": 50,
+            "input_threshold_pct_rise": 50,
+            "output_threshold_pct_rise": 50,
+            "slew_lower_threshold_pct_fall": 30,
+            "slew_upper_threshold_pct_fall": 70,
+            "slew_derate_from_library": 0.5,
+            "lu_table_template": {
+                "CELL_UP": {
+                    "variable_1": "input_net_transition",
+                    "variable_2": "total_output_net_capacitance",
+                    "index_1": [
+                        0.02,
+                        0.04,
+                        0.1,
+                        0.2,
+                        0.5
+                    ],
+                    "index_2": [
+                        0.005,
+                        0.02,
+                        0.05,
+                        0.1,
+                        0.25
+                    ]
+                },
+                "CELL_DN": {
+                    "variable_1": "input_net_transition",
+                    "variable_2": "total_output_net_capacitance",
+                    "index_1": [
+                        0.02,
+                        0.04,
+                        0.1,
+                        0.2,
+                        0.5
+                    ],
+                    "index_2": [
+                        0.005,
+                        0.02,
+                        0.05,
+                        0.1,
+                        0.25
+                    ]
+                },
+                "CONSTRAINT_HIGH_POS": {
+                    "variable_1": "related_pin_transition",
+                    "variable_2": "constrained_pin_transition",
+                    "index_1": [
+                        0.02,
+                        0.04,
+                        0.1,
+                        0.2,
+                        0.5
+                    ],
+                    "index_2": [
+                        0.02,
+                        0.04,
+                        0.1,
+                        0.2,
+                        0.5
+                    ]
+                },
+                "CLK_TRAN": {
+                    "variable_1": "constrained_pin_transition",
+                    "index_1": [
+                        0.02,
+                        0.04,
+                        0.1,
+                        0.2,
+                        0.5
+                    ]
+                },
+                "TRAN": {
+                    "variable_1": "total_output_net_capacitance",
+                    "index_1": [
+                        0.005,
+                        0.02,
+                        0.05,
+                        0.1,
+                        0.25
+                    ]
+                }
+            },
+            "power_lut_template": {
+                "INPUT_BY_TRANS": {
+                    "variable_1": "input_transition_time",
+                    "index_1": [
+                        0.02,
+                        0.04,
+                        0.1,
+                        0.2,
+                        0.5
+                    ]
+                }
+            },
+            "type": {
+                "Q_31_0": {
+                    "base_type": "array",
+                    "data_type": "bit",
+                    "bit_width": 32,
+                    "bit_from": 31,
+                    "bit_to": 0,
+                    "downto": true
+                },
+                "ADR_9_0": {
+                    "base_type": "array",
+                    "data_type": "bit",
+                    "bit_width": 10,
+                    "bit_from": 9,
+                    "bit_to": 0,
+                    "downto": true
+                },
+                "D_31_0": {
+                    "base_type": "array",
+                    "data_type": "bit",
+                    "bit_width": 32,
+                    "bit_from": 31,
+                    "bit_to": 0,
+                    "downto": true
+                },
+                "RM_3_0": {
+                    "base_type": "array",
+                    "data_type": "bit",
+                    "bit_width": 4,
+                    "bit_from": 3,
+                    "bit_to": 0,
+                    "downto": true
+                }
+            },
+            "cell": {
+                "ram1kx32_2p1r1w": {
+                    "memory": {
+                        "type": "ram",
+                        "address_width": 10,
+                        "word_width": 32
+                    },
+                    "PWL": "0.000000ns 1.561140mA 0.350000ns 8.561445mA 0.792286ns 0.000000mA 1.509244ns 0.000000mA 2.075500ns 14.051059mA 2.641756ns 0.000000mA 19.950000ns 0.000000mA 20.000000ns 0.000000mA 20.050000ns 0.000000mA 20.100000ns 0.000000mA 20.150000ns 0.000000mA 20.200000ns 0.000000mA 20.250000ns 0.000000mA 20.300000ns 0.000000mA 20.350000ns 0.000000mA ",
+                    "total_intrinsic_cap": 45.8752,
+                    "interface_timing": true,
+                    "dont_use": true,
+                    "map_only": true,
+                    "dont_touch": true,
+                    "area": 51734.4761,
+                    "bus": {
+                        "QB": {
+                            "bus_type": "Q_31_0",
+                            "direction": "output",
+                            "pin": {
+                                "QB[31:0]": {
+                                    "internal_power": {
+                                        "rise_power": {
+                                            "scalar": {
+                                                "values": [
+                                                    0.177095
+                                                ]
+                                            }
+                                        },
+                                        "fall_power": {
+                                            "scalar": {
+                                                "values": [
+                                                    0.177095
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "max_capacitance": 0.25,
+                            "memory_read": {
+                                "address": "ADRB"
+                            },
+                            "timing": {
+                                "related_pin": "CLKB",
+                                "timing_sense": "non_unate",
+                                "timing_type": "rising_edge",
+                                "sdf_cond": "RMEB &  RMB[0] & RMB[1] & !RMB[2] & !RMB[3] ",
+                                "when": "RMEB &  RMB[0] & RMB[1] & !RMB[2] & !RMB[3] ",
+                                "cell_rise": {
+                                    "CELL_UP": {
+                                        "values": [
+                                            1.024146,
+                                            1.050061,
+                                            1.095124,
+                                            1.168844,
+                                            1.388919,
+                                            1.027804,
+                                            1.053718,
+                                            1.098782,
+                                            1.172502,
+                                            1.392576,
+                                            1.038241,
+                                            1.064155,
+                                            1.109219,
+                                            1.182939,
+                                            1.403013,
+                                            1.051235,
+                                            1.077149,
+                                            1.122213,
+                                            1.195933,
+                                            1.416007,
+                                            1.075076,
+                                            1.10099,
+                                            1.146054,
+                                            1.219774,
+                                            1.439848
+                                        ]
+                                    }
+                                },
+                                "cell_fall": {
+                                    "CELL_DN": {
+                                        "values": [
+                                            1.014095,
+                                            1.038432,
+                                            1.079846,
+                                            1.146701,
+                                            1.345884,
+                                            1.017752,
+                                            1.04209,
+                                            1.083503,
+                                            1.150358,
+                                            1.349541,
+                                            1.028189,
+                                            1.052527,
+                                            1.09394,
+                                            1.160795,
+                                            1.359978,
+                                            1.041183,
+                                            1.065521,
+                                            1.106934,
+                                            1.173789,
+                                            1.372972,
+                                            1.065024,
+                                            1.089362,
+                                            1.130775,
+                                            1.19763,
+                                            1.396813
+                                        ]
+                                    }
+                                },
+                                "retaining_rise": {
+                                    "CELL_UP": {
+                                        "values": [
+                                            0.881683,
+                                            0.903587,
+                                            0.940859,
+                                            1.001028,
+                                            1.180293,
+                                            0.884975,
+                                            0.906879,
+                                            0.944151,
+                                            1.00432,
+                                            1.183585,
+                                            0.894368,
+                                            0.916272,
+                                            0.953544,
+                                            1.013713,
+                                            1.192978,
+                                            0.906063,
+                                            0.927967,
+                                            0.965238,
+                                            1.025408,
+                                            1.204673,
+                                            0.92752,
+                                            0.949423,
+                                            0.986695,
+                                            1.046865,
+                                            1.22613
+                                        ]
+                                    }
+                                },
+                                "retaining_fall": {
+                                    "CELL_DN": {
+                                        "values": [
+                                            0.881683,
+                                            0.903587,
+                                            0.940859,
+                                            1.001028,
+                                            1.180293,
+                                            0.884975,
+                                            0.906879,
+                                            0.944151,
+                                            1.00432,
+                                            1.183585,
+                                            0.894368,
+                                            0.916272,
+                                            0.953544,
+                                            1.013713,
+                                            1.192978,
+                                            0.906063,
+                                            0.927967,
+                                            0.965238,
+                                            1.025408,
+                                            1.204673,
+                                            0.92752,
+                                            0.949423,
+                                            0.986695,
+                                            1.046865,
+                                            1.22613
+                                        ]
+                                    }
+                                },
+                                "retain_rise_slew": {
+                                    "TRAN": {
+                                        "values": [
+                                            0.028641,
+                                            0.06711,
+                                            0.148734,
+                                            0.284102,
+                                            0.701041
+                                        ]
+                                    }
+                                },
+                                "retain_fall_slew": {
+                                    "TRAN": {
+                                        "values": [
+                                            0.026665,
+                                            0.060438,
+                                            0.130276,
+                                            0.250673,
+                                            0.6113
+                                        ]
+                                    }
+                                },
+                                "rise_transition": {
+                                    "TRAN": {
+                                        "values": [
+                                            0.028641,
+                                            0.06711,
+                                            0.148734,
+                                            0.284102,
+                                            0.701041
+                                        ]
+                                    }
+                                },
+                                "fall_transition": {
+                                    "TRAN": {
+                                        "values": [
+                                            0.026665,
+                                            0.060438,
+                                            0.130276,
+                                            0.250673,
+                                            0.6113
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "ADRA": {
+                            "bus_type": "ADR_9_0",
+                            "direction": "input",
+                            "capacitance": 0.005256,
+                            "max_transition": 0.5,
+                            "fanout_load": 3.0,
+                            "pin": {
+                                "ADRA[9:0]": {
+                                    "internal_power": {
+                                        "when": "!MEA",
+                                        "rise_power": {
+                                            "INPUT_BY_TRANS": {
+                                                "values": [
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681
+                                                ]
+                                            }
+                                        },
+                                        "fall_power": {
+                                            "INPUT_BY_TRANS": {
+                                                "values": [
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "timing": {
+                                "timing_type": "hold_rising",
+                                "related_pin": "CLKA",
+                                "sdf_cond": "ENADRA",
+                                "when": "MEA",
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.12,
+                                            0.116535,
+                                            0.106608,
+                                            0.095722,
+                                            0.067731,
+                                            0.123836,
+                                            0.120371,
+                                            0.110445,
+                                            0.099558,
+                                            0.071568,
+                                            0.133874,
+                                            0.130408,
+                                            0.120482,
+                                            0.109596,
+                                            0.081605,
+                                            0.145763,
+                                            0.142298,
+                                            0.132372,
+                                            0.121485,
+                                            0.093495,
+                                            0.166584,
+                                            0.163119,
+                                            0.153192,
+                                            0.142306,
+                                            0.114315
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.12,
+                                            0.116535,
+                                            0.106608,
+                                            0.095722,
+                                            0.067731,
+                                            0.123836,
+                                            0.120371,
+                                            0.110445,
+                                            0.099558,
+                                            0.071568,
+                                            0.133874,
+                                            0.130408,
+                                            0.120482,
+                                            0.109596,
+                                            0.081605,
+                                            0.145763,
+                                            0.142298,
+                                            0.132372,
+                                            0.121485,
+                                            0.093495,
+                                            0.166584,
+                                            0.163119,
+                                            0.153192,
+                                            0.142306,
+                                            0.114315
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "DA": {
+                            "bus_type": "D_31_0",
+                            "direction": "input",
+                            "capacitance": 0.000737,
+                            "max_transition": 0.5,
+                            "fanout_load": 1.0,
+                            "pin": {
+                                "DA[31:0]": {
+                                    "internal_power": {
+                                        "rise_power": {
+                                            "INPUT_BY_TRANS": {
+                                                "values": [
+                                                    0.070313,
+                                                    0.070313,
+                                                    0.070313,
+                                                    0.070313,
+                                                    0.070313
+                                                ]
+                                            }
+                                        },
+                                        "fall_power": {
+                                            "INPUT_BY_TRANS": {
+                                                "values": [
+                                                    0.070313,
+                                                    0.070313,
+                                                    0.070313,
+                                                    0.070313,
+                                                    0.070313
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "memory_write": {
+                                "address": "ADRA",
+                                "clocked_on": "CLKA"
+                            },
+                            "timing": {
+                                "timing_type": "hold_rising",
+                                "related_pin": "CLKA",
+                                "sdf_cond": "ENDA",
+                                "when": "WEA & MEA",
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.247725,
+                                            0.2447,
+                                            0.23569,
+                                            0.225193,
+                                            0.208533,
+                                            0.252591,
+                                            0.249566,
+                                            0.240556,
+                                            0.230059,
+                                            0.2134,
+                                            0.264675,
+                                            0.26165,
+                                            0.25264,
+                                            0.242143,
+                                            0.225484,
+                                            0.280931,
+                                            0.277906,
+                                            0.268896,
+                                            0.258399,
+                                            0.24174,
+                                            0.308399,
+                                            0.305374,
+                                            0.296364,
+                                            0.285867,
+                                            0.269208
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.247725,
+                                            0.2447,
+                                            0.23569,
+                                            0.225193,
+                                            0.208533,
+                                            0.252591,
+                                            0.249566,
+                                            0.240556,
+                                            0.230059,
+                                            0.2134,
+                                            0.264675,
+                                            0.26165,
+                                            0.25264,
+                                            0.242143,
+                                            0.225484,
+                                            0.280931,
+                                            0.277906,
+                                            0.268896,
+                                            0.258399,
+                                            0.24174,
+                                            0.308399,
+                                            0.305374,
+                                            0.296364,
+                                            0.285867,
+                                            0.269208
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "ADRB": {
+                            "bus_type": "ADR_9_0",
+                            "direction": "input",
+                            "capacitance": 0.005256,
+                            "max_transition": 0.5,
+                            "fanout_load": 3.0,
+                            "pin": {
+                                "ADRB[9:0]": {
+                                    "internal_power": {
+                                        "when": "!MEB",
+                                        "rise_power": {
+                                            "INPUT_BY_TRANS": {
+                                                "values": [
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681
+                                                ]
+                                            }
+                                        },
+                                        "fall_power": {
+                                            "INPUT_BY_TRANS": {
+                                                "values": [
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681,
+                                                    0.032681
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "timing": {
+                                "timing_type": "hold_rising",
+                                "related_pin": "CLKB",
+                                "sdf_cond": "ENADRB",
+                                "when": "MEB",
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.12,
+                                            0.116535,
+                                            0.106608,
+                                            0.095722,
+                                            0.067731,
+                                            0.123836,
+                                            0.120371,
+                                            0.110445,
+                                            0.099558,
+                                            0.071568,
+                                            0.133874,
+                                            0.130408,
+                                            0.120482,
+                                            0.109596,
+                                            0.081605,
+                                            0.145763,
+                                            0.142298,
+                                            0.132372,
+                                            0.121485,
+                                            0.093495,
+                                            0.166584,
+                                            0.163119,
+                                            0.153192,
+                                            0.142306,
+                                            0.114315
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.12,
+                                            0.116535,
+                                            0.106608,
+                                            0.095722,
+                                            0.067731,
+                                            0.123836,
+                                            0.120371,
+                                            0.110445,
+                                            0.099558,
+                                            0.071568,
+                                            0.133874,
+                                            0.130408,
+                                            0.120482,
+                                            0.109596,
+                                            0.081605,
+                                            0.145763,
+                                            0.142298,
+                                            0.132372,
+                                            0.121485,
+                                            0.093495,
+                                            0.166584,
+                                            0.163119,
+                                            0.153192,
+                                            0.142306,
+                                            0.114315
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "RMB": {
+                            "bus_type": "RM_3_0",
+                            "direction": "input",
+                            "capacitance": 0.002794,
+                            "max_transition": 0.5,
+                            "fanout_load": 2.0,
+                            "timing": {
+                                "timing_type": "hold_rising",
+                                "related_pin": "CLKB",
+                                "sdf_cond": "ENRMB",
+                                "when": "MEB & RMEB",
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.979988,
+                                            0.976523,
+                                            0.966597,
+                                            0.95571,
+                                            0.92772,
+                                            0.983825,
+                                            0.980359,
+                                            0.970433,
+                                            0.959547,
+                                            0.931556,
+                                            0.993862,
+                                            0.990397,
+                                            0.98047,
+                                            0.969584,
+                                            0.941593,
+                                            1.005751,
+                                            1.002286,
+                                            0.99236,
+                                            0.981473,
+                                            0.953483,
+                                            1.026572,
+                                            1.023107,
+                                            1.01318,
+                                            1.002294,
+                                            0.974303
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.979988,
+                                            0.976523,
+                                            0.966597,
+                                            0.95571,
+                                            0.92772,
+                                            0.983825,
+                                            0.980359,
+                                            0.970433,
+                                            0.959547,
+                                            0.931556,
+                                            0.993862,
+                                            0.990397,
+                                            0.98047,
+                                            0.969584,
+                                            0.941593,
+                                            1.005751,
+                                            1.002286,
+                                            0.99236,
+                                            0.981473,
+                                            0.953483,
+                                            1.026572,
+                                            1.023107,
+                                            1.01318,
+                                            1.002294,
+                                            0.974303
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "pin": {
+                        "WEA": {
+                            "direction": "input",
+                            "capacitance": 0.003242,
+                            "max_transition": 0.5,
+                            "fanout_load": 2.0,
+                            "internal_power": {
+                                "rise_power": {
+                                    "INPUT_BY_TRANS": {
+                                        "values": [
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068
+                                        ]
+                                    }
+                                },
+                                "fall_power": {
+                                    "INPUT_BY_TRANS": {
+                                        "values": [
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068
+                                        ]
+                                    }
+                                }
+                            },
+                            "timing": {
+                                "timing_type": "hold_rising",
+                                "related_pin": "CLKA",
+                                "sdf_cond": "ENWEA",
+                                "when": "MEA",
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "MEA": {
+                            "direction": "input",
+                            "capacitance": 0.003242,
+                            "max_transition": 0.5,
+                            "fanout_load": 2.0,
+                            "internal_power": {
+                                "rise_power": {
+                                    "INPUT_BY_TRANS": {
+                                        "values": [
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068
+                                        ]
+                                    }
+                                },
+                                "fall_power": {
+                                    "INPUT_BY_TRANS": {
+                                        "values": [
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068
+                                        ]
+                                    }
+                                }
+                            },
+                            "timing": {
+                                "timing_type": "hold_rising",
+                                "related_pin": "CLKA",
+                                "sdf_cond": "ENMEA",
+                                "when": 1,
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.021607,
+                                            0.017372,
+                                            0.004977,
+                                            0.0,
+                                            0.0,
+                                            0.025642,
+                                            0.021408,
+                                            0.009013,
+                                            0.0,
+                                            0.0,
+                                            0.035694,
+                                            0.03146,
+                                            0.019065,
+                                            0.002311,
+                                            0.0,
+                                            0.049022,
+                                            0.044787,
+                                            0.032392,
+                                            0.015638,
+                                            0.0,
+                                            0.072185,
+                                            0.06795,
+                                            0.055555,
+                                            0.038801,
+                                            0.001114
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.021607,
+                                            0.017372,
+                                            0.004977,
+                                            0.0,
+                                            0.0,
+                                            0.025642,
+                                            0.021408,
+                                            0.009013,
+                                            0.0,
+                                            0.0,
+                                            0.035694,
+                                            0.03146,
+                                            0.019065,
+                                            0.002311,
+                                            0.0,
+                                            0.049022,
+                                            0.044787,
+                                            0.032392,
+                                            0.015638,
+                                            0.0,
+                                            0.072185,
+                                            0.06795,
+                                            0.055555,
+                                            0.038801,
+                                            0.001114
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "CLKA": {
+                            "timing": {
+                                "timing_type": "recovery_rising",
+                                "related_pin": "CLKB",
+                                "sdf_cond": "ENCLKACLKBrec",
+                                "when": "(MEB & MEA & WEA ) ",
+                                "fall_constraint": {
+                                    "CLK_TRAN": {
+                                        "values": [
+                                            1.14866,
+                                            1.152454,
+                                            1.16254,
+                                            1.174395,
+                                            1.195635
+                                        ]
+                                    }
+                                },
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.951406,
+                                            0.954431,
+                                            0.963441,
+                                            0.973938,
+                                            0.990597,
+                                            0.94722,
+                                            0.950245,
+                                            0.959255,
+                                            0.969752,
+                                            0.986411,
+                                            0.937349,
+                                            0.940374,
+                                            0.949384,
+                                            0.959881,
+                                            0.97654,
+                                            0.923803,
+                                            0.926828,
+                                            0.935838,
+                                            0.946335,
+                                            0.962995,
+                                            0.900758,
+                                            0.903784,
+                                            0.912794,
+                                            0.923291,
+                                            0.93995
+                                        ]
+                                    }
+                                }
+                            },
+                            "clock": true,
+                            "direction": "input",
+                            "capacitance": 0.004606,
+                            "max_transition": 0.5,
+                            "fanout_load": 3.0,
+                            "internal_power": {
+                                "when": "MEA & WEA & !RMEB",
+                                "rise_power": {
+                                    "INPUT_BY_TRANS": {
+                                        "values": [
+                                            9.910296,
+                                            9.910296,
+                                            9.910296,
+                                            9.910296,
+                                            9.910296
+                                        ]
+                                    }
+                                },
+                                "fall_power": {
+                                    "INPUT_BY_TRANS": {
+                                        "values": [
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "TEST1A": {
+                            "direction": "input",
+                            "capacitance": 0.002794,
+                            "max_transition": 0.5,
+                            "fanout_load": 2.0,
+                            "timing": {
+                                "timing_type": "hold_falling",
+                                "related_pin": "CLKA",
+                                "sdf_cond": "ENTEST1A",
+                                "when": "MEA",
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            1.881883,
+                                            1.878418,
+                                            1.868491,
+                                            1.857605,
+                                            1.829614,
+                                            1.885719,
+                                            1.882254,
+                                            1.872328,
+                                            1.861441,
+                                            1.833451,
+                                            1.895757,
+                                            1.892291,
+                                            1.882365,
+                                            1.871479,
+                                            1.843488,
+                                            1.907646,
+                                            1.904181,
+                                            1.894255,
+                                            1.883368,
+                                            1.855378,
+                                            1.928467,
+                                            1.925001,
+                                            1.915075,
+                                            1.904189,
+                                            1.876198
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            1.881883,
+                                            1.878418,
+                                            1.868491,
+                                            1.857605,
+                                            1.829614,
+                                            1.885719,
+                                            1.882254,
+                                            1.872328,
+                                            1.861441,
+                                            1.833451,
+                                            1.895757,
+                                            1.892291,
+                                            1.882365,
+                                            1.871479,
+                                            1.843488,
+                                            1.907646,
+                                            1.904181,
+                                            1.894255,
+                                            1.883368,
+                                            1.855378,
+                                            1.928467,
+                                            1.925001,
+                                            1.915075,
+                                            1.904189,
+                                            1.876198
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "WMENA": {
+                            "direction": "input",
+                            "capacitance": 0.002794,
+                            "max_transition": 0.5,
+                            "fanout_load": 2.0,
+                            "timing": {
+                                "timing_type": "hold_rising",
+                                "related_pin": "CLKA",
+                                "sdf_cond": "ENWMENA",
+                                "when": "(MEA & WEA)",
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.979988,
+                                            0.976963,
+                                            0.967953,
+                                            0.957456,
+                                            0.940797,
+                                            0.983825,
+                                            0.980799,
+                                            0.971789,
+                                            0.961292,
+                                            0.944633,
+                                            0.993862,
+                                            0.990836,
+                                            0.981827,
+                                            0.97133,
+                                            0.95467,
+                                            1.005751,
+                                            1.002726,
+                                            0.993716,
+                                            0.983219,
+                                            0.96656,
+                                            1.026572,
+                                            1.023547,
+                                            1.014537,
+                                            1.00404,
+                                            0.98738
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.979988,
+                                            0.976963,
+                                            0.967953,
+                                            0.957456,
+                                            0.940797,
+                                            0.983825,
+                                            0.980799,
+                                            0.971789,
+                                            0.961292,
+                                            0.944633,
+                                            0.993862,
+                                            0.990836,
+                                            0.981827,
+                                            0.97133,
+                                            0.95467,
+                                            1.005751,
+                                            1.002726,
+                                            0.993716,
+                                            0.983219,
+                                            0.96656,
+                                            1.026572,
+                                            1.023547,
+                                            1.014537,
+                                            1.00404,
+                                            0.98738
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "MEB": {
+                            "direction": "input",
+                            "capacitance": 0.003242,
+                            "max_transition": 0.5,
+                            "fanout_load": 2.0,
+                            "internal_power": {
+                                "rise_power": {
+                                    "INPUT_BY_TRANS": {
+                                        "values": [
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068
+                                        ]
+                                    }
+                                },
+                                "fall_power": {
+                                    "INPUT_BY_TRANS": {
+                                        "values": [
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068,
+                                            0.064068
+                                        ]
+                                    }
+                                }
+                            },
+                            "timing": {
+                                "timing_type": "hold_rising",
+                                "related_pin": "CLKB",
+                                "sdf_cond": "ENMEB",
+                                "when": 1,
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.021607,
+                                            0.017372,
+                                            0.004977,
+                                            0.0,
+                                            0.0,
+                                            0.025642,
+                                            0.021408,
+                                            0.009013,
+                                            0.0,
+                                            0.0,
+                                            0.035694,
+                                            0.03146,
+                                            0.019065,
+                                            0.002311,
+                                            0.0,
+                                            0.049022,
+                                            0.044787,
+                                            0.032392,
+                                            0.015638,
+                                            0.0,
+                                            0.072185,
+                                            0.06795,
+                                            0.055555,
+                                            0.038801,
+                                            0.001114
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.021607,
+                                            0.017372,
+                                            0.004977,
+                                            0.0,
+                                            0.0,
+                                            0.025642,
+                                            0.021408,
+                                            0.009013,
+                                            0.0,
+                                            0.0,
+                                            0.035694,
+                                            0.03146,
+                                            0.019065,
+                                            0.002311,
+                                            0.0,
+                                            0.049022,
+                                            0.044787,
+                                            0.032392,
+                                            0.015638,
+                                            0.0,
+                                            0.072185,
+                                            0.06795,
+                                            0.055555,
+                                            0.038801,
+                                            0.001114
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "CLKB": {
+                            "timing": {
+                                "timing_type": "recovery_rising",
+                                "related_pin": "CLKA",
+                                "sdf_cond": "ENCLKBCLKArec",
+                                "when": "(MEB & MEA & WEA ) ",
+                                "fall_constraint": {
+                                    "CLK_TRAN": {
+                                        "values": [
+                                            1.14866,
+                                            1.152454,
+                                            1.16254,
+                                            1.174395,
+                                            1.195635
+                                        ]
+                                    }
+                                },
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.951406,
+                                            0.954431,
+                                            0.963441,
+                                            0.973938,
+                                            0.990597,
+                                            0.94722,
+                                            0.950245,
+                                            0.959255,
+                                            0.969752,
+                                            0.986411,
+                                            0.937349,
+                                            0.940374,
+                                            0.949384,
+                                            0.959881,
+                                            0.97654,
+                                            0.923803,
+                                            0.926828,
+                                            0.935838,
+                                            0.946335,
+                                            0.962995,
+                                            0.900758,
+                                            0.903784,
+                                            0.912794,
+                                            0.923291,
+                                            0.93995
+                                        ]
+                                    }
+                                }
+                            },
+                            "clock": true,
+                            "direction": "input",
+                            "capacitance": 0.004606,
+                            "max_transition": 0.5,
+                            "fanout_load": 3.0,
+                            "internal_power": {
+                                "when": "MEB & !RMEB",
+                                "rise_power": {
+                                    "INPUT_BY_TRANS": {
+                                        "values": [
+                                            8.738968,
+                                            8.738968,
+                                            8.738968,
+                                            8.738968,
+                                            8.738968
+                                        ]
+                                    }
+                                },
+                                "fall_power": {
+                                    "INPUT_BY_TRANS": {
+                                        "values": [
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0,
+                                            0.0
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "TEST1B": {
+                            "direction": "input",
+                            "capacitance": 0.002794,
+                            "max_transition": 0.5,
+                            "fanout_load": 2.0,
+                            "timing": {
+                                "timing_type": "hold_falling",
+                                "related_pin": "CLKB",
+                                "sdf_cond": "ENTEST1B",
+                                "when": "MEB",
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            1.881883,
+                                            1.878418,
+                                            1.868491,
+                                            1.857605,
+                                            1.829614,
+                                            1.885719,
+                                            1.882254,
+                                            1.872328,
+                                            1.861441,
+                                            1.833451,
+                                            1.895757,
+                                            1.892291,
+                                            1.882365,
+                                            1.871479,
+                                            1.843488,
+                                            1.907646,
+                                            1.904181,
+                                            1.894255,
+                                            1.883368,
+                                            1.855378,
+                                            1.928467,
+                                            1.925001,
+                                            1.915075,
+                                            1.904189,
+                                            1.876198
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            1.881883,
+                                            1.878418,
+                                            1.868491,
+                                            1.857605,
+                                            1.829614,
+                                            1.885719,
+                                            1.882254,
+                                            1.872328,
+                                            1.861441,
+                                            1.833451,
+                                            1.895757,
+                                            1.892291,
+                                            1.882365,
+                                            1.871479,
+                                            1.843488,
+                                            1.907646,
+                                            1.904181,
+                                            1.894255,
+                                            1.883368,
+                                            1.855378,
+                                            1.928467,
+                                            1.925001,
+                                            1.915075,
+                                            1.904189,
+                                            1.876198
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "RMEB": {
+                            "direction": "input",
+                            "capacitance": 0.002794,
+                            "max_transition": 0.5,
+                            "fanout_load": 2.0,
+                            "timing": {
+                                "timing_type": "hold_rising",
+                                "related_pin": "CLKB",
+                                "sdf_cond": "ENRMEB",
+                                "when": "MEB",
+                                "rise_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.979988,
+                                            0.976523,
+                                            0.966597,
+                                            0.95571,
+                                            0.92772,
+                                            0.983825,
+                                            0.980359,
+                                            0.970433,
+                                            0.959547,
+                                            0.931556,
+                                            0.993862,
+                                            0.990397,
+                                            0.98047,
+                                            0.969584,
+                                            0.941593,
+                                            1.005751,
+                                            1.002286,
+                                            0.99236,
+                                            0.981473,
+                                            0.953483,
+                                            1.026572,
+                                            1.023107,
+                                            1.01318,
+                                            1.002294,
+                                            0.974303
+                                        ]
+                                    }
+                                },
+                                "fall_constraint": {
+                                    "CONSTRAINT_HIGH_POS": {
+                                        "values": [
+                                            0.979988,
+                                            0.976523,
+                                            0.966597,
+                                            0.95571,
+                                            0.92772,
+                                            0.983825,
+                                            0.980359,
+                                            0.970433,
+                                            0.959547,
+                                            0.931556,
+                                            0.993862,
+                                            0.990397,
+                                            0.98047,
+                                            0.969584,
+                                            0.941593,
+                                            1.005751,
+                                            1.002286,
+                                            0.99236,
+                                            0.981473,
+                                            0.953483,
+                                            1.026572,
+                                            1.023107,
+                                            1.01318,
+                                            1.002294,
+                                            0.974303
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "leakage_power": {
+                        "when": "(((!MEA)) & ((!MEB))) ",
+                        "value": 3012.3373392135404
+                    },
+                    "cell_leakage_power": 4054.2414042492064
+                }
+            }
+        }
+    }
+}
